@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Vacancy from './lib/Vacancy.svelte';
-    import type { VacancyType } from './lib/VacancyType';
+    import Vacancy from '../lib/Vacancy.svelte';
+    import type { VacancyType } from '../lib/VacancyType';
 
     interface ApiResponse {
         page: number,
