@@ -1,31 +1,46 @@
 <script lang="ts">
     import type { VacancyType } from './VacancyType';
 
+    let expanded = false;
     export let data: VacancyType;
 </script>
-
-<div class="vacancy">
-    <h2>{data.name}</h2>
-    <p>{@html data.contents}</p>
+    
+<div id="vacancy" class={expanded ? "expanded" : "folded"} on:click={e => expanded =! expanded}>
+    <h2 id="name"><a id="name-link" href={data.refs.landing_page}>{data.name}</a></h2>
+    {#if expanded}
+        <div id="vacancy-contents">
+            <div id="contents">{@html data.contents}</div>
+        </div>
+    {/if}
 </div>
 
 
 <style>
-    .vacancy {
+    div#vacancy {
         background-color: #d0d2db;
-        border-radius: 50px;
+        border-radius: 39px;
         margin-bottom: 7vh;
+        font-family: 'Lato';
     }
-    h2, p {
-        font-family: 'Lato', sans-serif;
-    }
-    h2 {
-        padding-top: 7vh;
+    h2#name {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
         padding-left: 4vw;
+        font-family: 'Lato-bold';
+        font-size: 2vmax;
     }
-    p {
+    #vacancy-contents {
         padding-left: 5.9vw;
         padding-bottom: 7vh;
-        padding-right: 4vw
+        padding-right: 4vw;
+        font-size: 1.5vmax;
+    }
+    #name-link {
+        text-decoration: none;
+        color: inherit;
+        transition: 250ms;
+    }
+    #name-link:hover {
+
     }
 </style>

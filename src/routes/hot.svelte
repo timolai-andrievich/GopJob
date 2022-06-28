@@ -26,41 +26,55 @@
     <title>The hottest vacancies</title>
 </svelte:head>
 
-<a href="/">JobFinder</a>
-<img src="fire.png" alt="Fire logo"/>
-<h1>List of the hottest<br> vacancies so far.</h1>
-
-<div class="vacancies-list" id="vacancies-list">
-    {#each vacancies as vacancy}
-        <Vacancy data={vacancy} />
-    {/each}
-</div>
+<body>>
+    <a href="/" id="logo">JobFinder</a>
+    <header>
+        <img src="fire.png" alt="Fire logo"/>
+        <h1>List of the hottest<br> vacancies so far.</h1>
+    </header>
+    <div class="vacancies-list" id="vacancies-list">
+        {#each vacancies as vacancy}
+            <Vacancy data={vacancy} />
+        {/each}
+    </div>
+</body>
 
 <style>
-    a {
+    @font-face {
+        font-family: 'Lato-bold';
+        src: url('/fonts/Lato-Bold.ttf');
+    }
+    @font-face {
+        font-family: 'Lato';
+        src: url('/fonts/Lato-Regular.ttf');
+    }
+    #logo {
         font-family: "Brawler", sans-serif;
         font-weight: bold;
-        font-size: 3.1vw;
+        font-size: 3.1vmax;
         text-decoration: none;
         color: black;
         position: absolute;
         right: 5vw;
-        top: 10vh
+        top: 10vh;
     }
-    img {
-        width: 5vw;
-        margin-top: 32.5vh;
-        margin-left: 3vw
+    header {
+        margin-top: 20vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 30vmin;
+        margin-bottom: 10vh;
+        font-family: 'Lato-bold';
     }
-    h1 {
-        margin-top: -10vh;
-        margin-left: 8.5vw;
-        margin-bottom: 7vh;
-        font-family: 'Lato', sans-serif;
-        font-size: 2.1vw;
+    header > img {
+        height: 100%;
     }
-    .vacancies-list {
-        margin-left: 2.5vw;
-        margin-right: 2.5vw;
+    header > h1 {
+        font-size: 7vmin;
+    }
+    body {
+        margin-left: 10vw;
+        margin-right: 10vw;
     }
 </style>
