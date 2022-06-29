@@ -65,10 +65,10 @@
         align-items: center;
         height: 30vmin;
         margin-bottom: 10vh;
-        font-family: 'Lato-bold';
+        font-family: 'Lato-bold', sans-serif;
     }
     header > img {
-        height: 100%;
+        height: 53%;
     }
     header > h1 {
         font-size: 7vmin;
