@@ -26,7 +26,7 @@
     <title>The hottest vacancies</title>
 </svelte:head>
 
-<body>>
+<body>
     <a href="/" id="logo">JobFinder</a>
     <header>
         <img src="fire.png" alt="Fire logo"/>
