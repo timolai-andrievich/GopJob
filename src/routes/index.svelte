@@ -1,1 +1,5 @@
-<a href="/hot">Hot vacancies</a>
+<script lang="ts">
+    import { base } from '$app/paths';
+</script>
+
+<a href="{base}/hot">Hot vacancies</a>

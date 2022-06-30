@@ -1,6 +1,7 @@
 <script lang="ts">
     import Vacancy from '../lib/Vacancy.svelte';
     import type { VacancyType } from '../lib/VacancyType';
+    import { base } from '$app/paths';
 
     interface ApiResponse {
         page: number,
@@ -27,9 +28,9 @@
 </svelte:head>
 
 <body>
-    <a href="/" id="logo">JobFinder</a>
+    <a href="{base}/" id="logo">JobFinder</a>
     <header>
-        <img src="fire.png" alt="Fire logo"/>
+        <img src="{base}/fire.png" alt="Fire logo"/>
         <h1>List of the hottest<br> vacancies so far.</h1>
     </header>
     <div class="vacancies-list" id="vacancies-list">
@@ -42,11 +43,11 @@
 <style>
     @font-face {
         font-family: 'Lato-bold';
-        src: url('/fonts/Lato-Bold.ttf');
+        src: url('../lib/fonts/Lato-Bold.ttf');
     }
     @font-face {
         font-family: 'Lato';
-        src: url('/fonts/Lato-Regular.ttf');
+        src: url('../lib/fonts/Lato-Regular.ttf');
     }
     #logo {
         font-family: "Brawler", sans-serif;
