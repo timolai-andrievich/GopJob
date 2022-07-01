@@ -5,8 +5,8 @@
     export let data: VacancyType;
 </script>
     
-<div id="vacancy" class={expanded ? "expanded" : "folded"} on:click={e => expanded =! expanded}>
-    <h2 id="name"><a id="name-link" href={data.refs.landing_page}>{data.name}</a></h2>
+<div id="vacancy" class={expanded ? "expanded" : "folded"} on:click={() => expanded =! expanded}>
+    <h2 id="name"><a id="name-link" title="Open in new tab" target="_blank" href={data.refs.landing_page}>{data.name}</a></h2>
     {#if expanded}
         <div id="vacancy-contents">
             <div id="contents">{@html data.contents}</div>
