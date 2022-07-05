@@ -5,7 +5,7 @@
     export let data: VacancyType;
 </script>
     
-<div id="vacancy" class={expanded ? "expanded" : "folded"} on:click={() => expanded =! expanded}>
+<div id="vacancy" class={expanded ? "expanded" : "folded"} on:click={e => expanded =! expanded}>
     <h2 id="name"><a id="name-link" href={data.refs.landing_page}>{data.name}</a></h2>
     {#if expanded}
         <div id="vacancy-contents">
@@ -17,7 +17,7 @@
 
 <style>
     div#vacancy {
-        background-color: #DCDCDC;
+        background-color: #d0d2db;
         border-radius: 39px;
         margin-bottom: 7vh;
         font-family: 'Lato';
