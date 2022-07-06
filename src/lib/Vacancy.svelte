@@ -17,7 +17,7 @@
 
 <style>
     div#vacancy {
-        background-color: #DCDCDC;
+        background-color: #d5d7df;
         border-radius: 39px;
         margin-bottom: 7vh;
         font-family: 'Lato';
