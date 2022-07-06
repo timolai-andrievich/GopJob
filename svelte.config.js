@@ -9,14 +9,18 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess(),
 
+	prerender: {
+		default: true
+	},
+
 	kit: {
 		paths: {
-			base: dev ? "" : "/jobs-finder",
+			base: dev ? '' : '/jobs-finder'
 		},
 		prerender: {
-			default: true,
+			default: true
 		},
-		adapter: adapter(),
+		adapter: adapter()
 	}
 };
 
