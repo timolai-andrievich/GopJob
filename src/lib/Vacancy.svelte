@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { VacancyType } from './VacancyType';
+	import type { VacancyType } from './ApiUtils';
 	import { base } from '$app/paths';
 
 	let expanded = false;

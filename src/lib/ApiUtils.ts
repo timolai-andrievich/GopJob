@@ -19,3 +19,13 @@ export interface VacancyType {
 		name: string;
 	};
 }
+
+export interface ApiResponse {
+	page: number;
+	page_count: number;
+	items_per_page: number;
+	took: number;
+	timed_out: boolean;
+	total: number;
+	results: Array<VacancyType>;
+}
