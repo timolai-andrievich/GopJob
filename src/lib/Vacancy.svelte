@@ -13,7 +13,7 @@
 		</h2>
 		<img
 			class="expand-button"
-			src="{base}/expand.svg"
+			src="{base}/expand.png"
 			alt={expanded ? 'Fold' : 'Expand'}
 			on:click={(e) => (expanded = !expanded)}
 			style="transform:scaleY({expanded ? -1 : 1})"
@@ -53,6 +53,9 @@
 		color: inherit;
 		transition: 250ms;
 	}
+	#name-link:hover {
+		color: #008;
+	}
 	.vacancy-header {
 		display: flex;
 		flex-direction: row;
@@ -61,11 +64,13 @@
 	}
 	.expand-button {
 		margin: 2vmin;
-		width: 5vw;
+		width: 2.5vw;
+		margin-right: 3vw;
 		transition: 250ms;
 	}
 	.expand-button:hover {
 		margin: 1vmin;
-		width: 6vw;
+		width: 3.5vw;
+		margin-right: 2.5vw;
 	}
 </style>

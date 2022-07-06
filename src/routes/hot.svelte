@@ -24,11 +24,10 @@
 </script>
 
 <svelte:head>
-	<title>The hottest vacancies</title>
+	<title>Hot vacancies</title>
 </svelte:head>
 
-<body>
-	<a href="{base}/" id="logo">JobFinder</a>
+<main>
 	<header>
 		<img src="{base}/fire.png" alt="Fire logo" />
 		<h1>List of the hottest<br /> vacancies so far.</h1>
@@ -38,29 +37,10 @@
 			<Vacancy data={vacancy} />
 		{/each}
 	</div>
-</body>
+</main>
 
 <style>
-	@font-face {
-		font-family: 'Lato-bold';
-		src: url('../lib/fonts/Lato-Bold.ttf');
-	}
-	@font-face {
-		font-family: 'Lato';
-		src: url('../lib/fonts/Lato-Regular.ttf');
-	}
-	#logo {
-		font-family: 'Brawler', sans-serif;
-		font-weight: bold;
-		font-size: 3.1vmax;
-		text-decoration: none;
-		color: black;
-		position: absolute;
-		right: 5vw;
-		top: 10vh;
-	}
 	header {
-		margin-top: 20vh;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -73,9 +53,5 @@
 	}
 	header > h1 {
 		font-size: 7vmin;
-	}
-	body {
-		margin-left: 10vw;
-		margin-right: 10vw;
 	}
 </style>
