@@ -1,17 +1,7 @@
 <script lang="ts">
 	import Vacancy from '../lib/Vacancy.svelte';
-	import type { VacancyType } from '../lib/VacancyType';
+	import type { VacancyType, ApiResponse } from '$lib/ApiUtils';
 	import { base } from '$app/paths';
-
-	interface ApiResponse {
-		page: number;
-		page_count: number;
-		items_per_page: number;
-		took: number;
-		timed_out: boolean;
-		total: number;
-		results: Array<VacancyType>;
-	}
 
 	async function updateVacancies(): Promise<Array<VacancyType>> {
 		let response: Response = await fetch('https://www.themuse.com/api/public/jobs?page=1');
