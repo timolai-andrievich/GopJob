@@ -14,10 +14,12 @@
 		font-family: 'Lato-bold';
 		src: url('../lib/fonts/Lato-Bold.ttf');
 	}
+
 	@font-face {
 		font-family: 'Lato';
 		src: url('../lib/fonts/Lato-Regular.ttf');
 	}
+
 	#logo {
 		font-family: 'Brawler', sans-serif;
 		font-weight: bold;
@@ -25,12 +27,14 @@
 		text-decoration: none;
 		color: black;
 	}
+
 	.app-container {
 		display: flex;
 		flex-direction: column;
 		margin-left: 10vw;
 		margin-right: 10vw;
 	}
+
 	#logo-container {
 		display: flex;
 		flex-direction: row;
