@@ -1,6 +1,7 @@
 <script type="ts">
 	import Vacancy from '../lib/Vacancy.svelte';
 	import type { VacancyType, ApiResponse } from '$lib/ApiUtils';
+	import { locations, categories } from '$lib/FilterConsts';
 
 	let activeFilterLocation: Element;
 	let activeFilterSalary: Element;
@@ -8,29 +9,39 @@
 	let activeFilterCategory: Element;
 
 	function updateActiveElement(filterType: String, toActive: Element) {
-		console.log(toActive);
-
 		switch (filterType) {
 			case 'location':
-				activeFilterLocation.classList.remove('active');
+				if (activeFilterLocation) {
+					activeFilterLocation.classList.remove('active');
+				}
+
 				activeFilterLocation = toActive;
 				activeFilterLocation.classList.add('active');
 				break;
 
 			case 'salary':
-				activeFilterSalary.classList.remove('active');
+				if (activeFilterSalary) {
+					activeFilterSalary.classList.remove('active');
+				}
+
 				activeFilterSalary = toActive;
 				activeFilterSalary.classList.add('active');
 				break;
 
 			case 'experience':
-				activeFilterExperience.classList.remove('active');
+				if (activeFilterExperience) {
+					activeFilterExperience.classList.remove('active');
+				}
+
 				activeFilterExperience = toActive;
 				activeFilterExperience.classList.add('active');
 				break;
 
 			case 'category':
-				activeFilterCategory.classList.remove('active');
+				if (activeFilterCategory) {
+					activeFilterCategory.classList.remove('active');
+				}
+
 				activeFilterCategory = toActive;
 				activeFilterCategory.classList.add('active');
 				break;
@@ -64,31 +75,14 @@
 
 			<div class="filter-content">
 				<ul class="select select-list">
-					<li
-						bind:this={activeFilterLocation}
-						on:click={(event) => updateActiveElement('location', event.target)}
-						class="inline-button active"
-					>
-						Franklin
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('location', event.target)}
-						class="inline-button"
-					>
-						Moscow
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('location', event.target)}
-						class="inline-button"
-					>
-						Kazan
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('location', event.target)}
-						class="inline-button"
-					>
-						San Francisco
-					</li>
+					{#each locations as location}
+						<li
+							on:click={(event) => updateActiveElement('location', event.target)}
+							class="inline-button"
+						>
+							{location}
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>
@@ -101,9 +95,8 @@
 			<div class="filter-content">
 				<ul class="select select-radio">
 					<li
-						bind:this={activeFilterSalary}
 						on:click={(event) => updateActiveElement('salary', event.target)}
-						class="radio-button salary-radio-button active"
+						class="radio-button salary-radio-button"
 					>
 						&lt; $1000
 					</li>
@@ -143,9 +136,8 @@
 			<div class="filter-content">
 				<ul class="select select-radio">
 					<li
-						bind:this={activeFilterExperience}
 						on:click={(event) => updateActiveElement('experience', event.target)}
-						class="radio-button experience-radio-button active"
+						class="radio-button experience-radio-button"
 					>
 						no
 					</li>
@@ -184,31 +176,14 @@
 
 			<div class="filter-content">
 				<ul class="select select-list">
-					<li
-						bind:this={activeFilterCategory}
-						on:click={(event) => updateActiveElement('category', event.target)}
-						class="inline-button active"
-					>
-						Art and drawing
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('category', event.target)}
-						class="inline-button"
-					>
-						Finances
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('category', event.target)}
-						class="inline-button"
-					>
-						IT and programming
-					</li>
-					<li
-						on:click={(event) => updateActiveElement('category', event.target)}
-						class="inline-button"
-					>
-						Make-up and beauty stuff
-					</li>
+					{#each categories as category}
+						<li
+							on:click={(event) => updateActiveElement('category', event.target)}
+							class="inline-button"
+						>
+							{category}
+						</li>
+					{/each}
 				</ul>
 			</div>
 		</div>
@@ -227,7 +202,7 @@
 	</div>
 </main>
 
-<style>
+<style global>
 	header {
 		display: flex;
 		flex-direction: row;
@@ -323,6 +298,13 @@
 	.select {
 		padding: 0;
 		list-style-type: none;
+	}
+
+	.filter-location > .filter-content > .select,
+	.filter-category > .filter-content > .select {
+		width: 100%;
+		height: 100vh;
+		overflow-y: auto;
 	}
 
 	.select > li:hover {
