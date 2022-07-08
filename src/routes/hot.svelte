@@ -20,7 +20,7 @@
 <main>
 	<header>
 		<img src="{base}/fire.png" alt="Fire logo" />
-		<h1>List of the hottest <br> vacancies so far.</h1>
+		<h1>List of the hottest <br /> vacancies so far.</h1>
 	</header>
 	<div class="vacancies-list" id="vacancies-list">
 		{#each vacancies as vacancy}

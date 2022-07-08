@@ -4,4 +4,3 @@
 
 <a href="{base}/hot">Hot vacancies</a>
 <a href="{base}/filter">Filter</a>
-
