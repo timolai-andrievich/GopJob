@@ -2,7 +2,6 @@
 	import { base } from '$app/paths';
 </script>
 
-
 <slot />
 
 <style>
