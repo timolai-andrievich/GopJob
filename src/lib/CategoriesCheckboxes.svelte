@@ -103,7 +103,6 @@
 			class="expand-button"
 			src="{base}/expand.png"
 			alt={expanded ? 'Fold' : 'Expand'}
-			
 			style="transform:scaleY({expanded ? -1 : 1})"
 		/>
 	</div>

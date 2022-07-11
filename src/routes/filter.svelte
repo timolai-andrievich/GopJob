@@ -3,7 +3,7 @@
 	import CategoriesCheckboxes from '$lib/CategoriesCheckboxes.svelte';
 	import CompanyCombobox from '$lib/CompanyCombobox.svelte';
 	import LevelSlider from '$lib/LevelSlider.svelte';
-import LocationFilter from '$lib/LocationFilter.svelte';
+	import LocationFilter from '$lib/LocationFilter.svelte';
 	import PageControls from '$lib/PageControls.svelte';
 	import Vacancy from '$lib/Vacancy.svelte';
 
@@ -12,7 +12,7 @@ import LocationFilter from '$lib/LocationFilter.svelte';
 		levelSliderText: '',
 		companies: [],
 		categories: {},
-		locations: [],
+		locations: []
 	};
 	let page = 1;
 	let totalPages = 0;
@@ -28,10 +28,10 @@ import LocationFilter from '$lib/LocationFilter.svelte';
 				res += `&category=${k}`;
 			}
 		}
-		for (let company of values.companies){
+		for (let company of values.companies) {
 			res += `&company=${company}`;
 		}
-		for (let location of values.locations){
+		for (let location of values.locations) {
 			res += `&location=${location}`;
 		}
 		return res;

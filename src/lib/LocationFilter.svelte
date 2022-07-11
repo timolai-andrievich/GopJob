@@ -1,20 +1,19 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte/internal';
-	import { base } from '$app/paths';   
-    import Tags from 'svelte-tags-input';
-    import { locations } from './Locations'
+	import { base } from '$app/paths';
+	import Tags from 'svelte-tags-input';
+	import { locations } from './Locations';
 
-    let tagFlags = "";
+	let tagFlags = '';
 	const dispatch = createEventDispatcher();
 	let expanded = false;
 	export let values;
-    
-    function onTagsUpdated(event) {
-            tagFlags = event.detail.tags;
-            values.locations = tagFlags;
-		    dispatch('updated');
-    }
-	
+
+	function onTagsUpdated(event) {
+		tagFlags = event.detail.tags;
+		values.locations = tagFlags;
+		dispatch('updated');
+	}
 </script>
 
 <div class="location-filter">
@@ -24,19 +23,18 @@
 			class="expand-button"
 			src="{base}/expand.png"
 			alt={expanded ? 'Fold' : 'Expand'}
-			
 			style="transform:scaleY({expanded ? -1 : 1})"
 		/>
 	</div>
 	{#if expanded}
 		<div id="locations-tags">
-            <Tags
-                    on:tags={onTagsUpdated}
-                    autoComplete={locations}
-                    onlyAutocomplete={true}
-                    minChars={3}
-                    autocomplete="off"
-                />
+			<Tags
+				on:tags={onTagsUpdated}
+				autoComplete={locations}
+				onlyAutocomplete={true}
+				minChars={3}
+				autocomplete="off"
+			/>
 		</div>
 	{/if}
 </div>

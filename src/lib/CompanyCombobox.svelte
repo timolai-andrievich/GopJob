@@ -3,24 +3,23 @@
 	import type { Company } from '$lib/ApiUtils';
 	import { base } from '$app/paths';
 	import { companies } from './Companies';
-    import Tags from 'svelte-tags-input';
+	import Tags from 'svelte-tags-input';
 
 	const dispatch = createEventDispatcher();
 	let expanded = false;
-	let tags = "";
+	let tags = '';
 	export let values;
 
-    function onTagsUpdated(event) {
-            tags = event.detail.tags;
-            values.companies = tags;
-		    dispatch('updated');
-    }
+	function onTagsUpdated(event) {
+		tags = event.detail.tags;
+		values.companies = tags;
+		dispatch('updated');
+	}
 </script>
 
 <div class="companies-filter">
 	<div on:click={(e) => (expanded = !expanded)} class="header">
-		<div 
-		>Companies</div>
+		<div>Companies</div>
 		<img
 			class="expand-button"
 			src="{base}/expand.png"
@@ -30,12 +29,7 @@
 	</div>
 	{#if expanded}
 		<div class="company-combobox">
-            <Tags
-                    on:tags={onTagsUpdated}
-                    autoComplete={companies}
-                    onlyAutocomplete={true}
-                    minChars={3}
-                />
+			<Tags on:tags={onTagsUpdated} autoComplete={companies} onlyAutocomplete={true} minChars={3} />
 		</div>
 	{/if}
 </div>

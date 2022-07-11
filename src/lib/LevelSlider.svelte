@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte/internal';
 	import { base } from '$app/paths';
-	
+
 	const dispatch = createEventDispatcher();
 	let expanded = false;
 	export let values;
@@ -26,7 +26,6 @@
 			class="expand-button"
 			src="{base}/expand.png"
 			alt={expanded ? 'Fold' : 'Expand'}
-			
 			style="transform:scaleY({expanded ? -1 : 1})"
 		/>
 	</div>

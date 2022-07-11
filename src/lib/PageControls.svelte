@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte/internal';
-	
+
 	const dispatch = createEventDispatcher();
 	export let page: number;
 	export let totalPages: number;
