@@ -23,7 +23,7 @@
 	</div>
 	<header>
 		<img src="{base}/fire.png" alt="Fire logo" />
-		<h1>List of the hottest<br /> vacancies so far.</h1>
+		<h1>List of the hottest <br /> vacancies so far.</h1>
 	</header>
 	<div class="vacancies-list" id="vacancies-list">
 		{#each vacancies as vacancy}
@@ -41,9 +41,11 @@
 		margin-bottom: 10vh;
 		font-family: 'Lato-bold', sans-serif;
 	}
+
 	header > img {
 		height: 53%;
 	}
+
 	header > h1 {
 		font-size: 7vmin;
 	}
