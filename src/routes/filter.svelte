@@ -6,6 +6,7 @@
 	import LocationFilter from '$lib/LocationFilter.svelte';
 	import PageControls from '$lib/PageControls.svelte';
 	import Vacancy from '$lib/Vacancy.svelte';
+	import { base } from '$app/paths';
 
 	let values = {
 		levelSlider: 0,
@@ -18,7 +19,6 @@
 	let totalPages = 0;
 	let updating = false;
 	let vacancies: Array<VacancyType> = [];
-	const dev = process.env.NODE_ENV === 'development';
 
 	function buildRequest(): string {
 		let res = `https://www.themuse.com/api/public/jobs?page=${page - 1}`;
@@ -48,17 +48,26 @@
 	}
 
 	async function autoUpdateVacancies() {
-		if (dev) {
-			console.log('auto updated');
-			console.log(values);
-		} else {
-			page = 1;
-			updateVacancies();
-		}
+		page = 1;
+		updateVacancies();
 	}
 
 	autoUpdateVacancies();
 </script>
+
+
+<svelte:head>
+	<title>JobFinder - Advanced Search</title>
+</svelte:head>
+
+<div id="logo-container">
+	<a href="{base}/"><img src="{base}/logo-black.png" alt="JD logo" /></a>
+</div>
+
+<header>
+	<img alt="Magnifier logo" src="{base}/magnifier.png" />
+	<h1>Choose the appropriate options for search and get your new job!</h1>
+</header>
 
 <main>
 	<div class="filters">
@@ -66,7 +75,6 @@
 		<CompanyCombobox bind:values on:updated={autoUpdateVacancies} />
 		<CategoriesCheckboxes bind:values on:updated={autoUpdateVacancies} />
 		<LocationFilter bind:values on:updated={autoUpdateVacancies} />
-		{#if dev}<button on:click={updateVacancies}>(DEBUG) Apply the filters</button>{/if}
 	</div>
 	<div class="vacancies">
 		<PageControls bind:page {totalPages} on:pageChanged={updateVacancies} />
@@ -82,15 +90,37 @@
 					</div>
 				</div>
 			{/if}
+			<div class="overlay" style={`display: ${updating ? 'block' : 'none'}`} />
 		</div>
-		<div class="overlay" style={`display: ${updating ? 'block' : 'none'}`} />
 		<PageControls bind:page {totalPages} on:pageChanged={updateVacancies} />
 	</div>
 </main>
 
 <style>
+	header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 30vmin;
+		margin-bottom: 10vh;
+		font-family: 'Lato-bold', sans-serif;
+		margin-left: 10vw;
+		margin-right: 10vw;
+	}
+
+	header > img {
+		height: 70%;
+	}
+
+	header > h1 {
+		font-size: 7vmin;
+	}
+
 	main {
 		display: flex;
+		font-family: 'Lato', sans-serif;
+		margin-left: 10vw;
+		margin-right: 10vw;
 	}
 	.no-vacancies {
 		background-color: #d5d7df;
@@ -124,5 +154,12 @@
 		width: 100%;
 		height: 100%;
 		background-color: rgba(255, 255, 255, 0.75);
+	}
+	#logo-container {
+		padding-top: 50px;
+		display: flex;
+		flex-direction: row;
+		justify-content: end;
+		margin-right: 10vw;
 	}
 </style>
