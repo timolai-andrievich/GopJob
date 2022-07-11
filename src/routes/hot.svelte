@@ -18,19 +18,17 @@
 </svelte:head>
 
 <main>
-	<div class="app-container">
-		<div id="logo-container">
-			<a href="{base}/"><img src="{base}/logo-black.png" alt="JD logo" /></a>
-		</div>
-		<header>
-			<img src="{base}/fire.png" alt="Fire logo" />
-			<h1>List of the hottest<br /> vacancies so far.</h1>
-		</header>
-		<div class="vacancies-list" id="vacancies-list">
-			{#each vacancies as vacancy}
-				<Vacancy data={vacancy} />
-			{/each}
-		</div>
+	<div id="logo-container">
+		<a href="{base}/"><img src="{base}/logo-black.png" alt="JD logo" /></a>
+	</div>
+	<header>
+		<img src="{base}/fire.png" alt="Fire logo" />
+		<h1>List of the hottest<br /> vacancies so far.</h1>
+	</header>
+	<div class="vacancies-list" id="vacancies-list">
+		{#each vacancies as vacancy}
+			<Vacancy data={vacancy} />
+		{/each}
 	</div>
 </main>
 
@@ -49,7 +47,7 @@
 	header > h1 {
 		font-size: 7vmin;
 	}
-	.app-container {
+	main {
 		display: flex;
 		flex-direction: column;
 		margin-left: 10vw;

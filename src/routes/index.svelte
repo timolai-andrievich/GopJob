@@ -8,11 +8,11 @@
 
 <div class="main-block">
 	<img src="{base}/logo_main.png" alt="JobFinder logo" />
-	<a href="{base}/filter"><button class="btn buton">Discover Jobs</button></a>
+	<a href="{base}/filter"><button class="btn discovery-button">Discover Jobs</button></a>
 </div>
 <div class="hot">
 	<div class="heading-hot">
-		<img src="{base}/fire copy.png" alt="fire icon" />
+		<img src="{base}/fire_black.png" alt="fire icon" />
 		<h2>Hot vacancies!</h2>
 	</div>
 	<p>Find your dream job right now on JobFinder!</p>
@@ -55,14 +55,6 @@
 	a {
 		text-decoration: none;
 	}
-	@font-face {
-		font-family: 'Lato-bold';
-		src: url('../lib/fonts/Lato-Bold.ttf');
-	}
-	@font-face {
-		font-family: 'Lato';
-		src: url('../lib/fonts/Lato-Regular.ttf');
-	}
 	.main-block {
 		background-image: url(./bg.png);
 		background-repeat: no-repeat;
@@ -79,8 +71,7 @@
 		margin-top: 50px;
 		width: 30%;
 	}
-	.buton {
-		width: 100%;
+	.discovery-button {
 		margin-bottom: 150px;
 		margin-right: 100px;
 	}
