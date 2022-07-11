@@ -4,81 +4,54 @@
     import {categories, locations} from '../lib/FilterConsts';
     import {base} from '$app/paths';
 
-    const vacancyRange = 200; // how many vacancies we search through
-    let vacancies: Array<VacancyType> = [];
+    let activeFilters: Array<Element> = new Array<Element>(3);
+    const maxPage = 50;
 
-    function sortVacancies(input: Array<VacancyType>, filters: Array<String>): Array<VacancyType> {
-        if (filters == null) return input;
-        let sorted: Array<VacancyType> = [];
-        for (let i = 0; i < 20; i++) {
-            let v = input[i];
-            try {
-                if ((filters[0] == undefined || v.locations[0] == undefined || filters[0].trim() == v.locations[0].name.trim()) &&
-                    (filters[2] == undefined || v.levels[0] == undefined || filters[2].trim() == v.levels[0].name.trim()) &&
-                    (filters[3] == undefined || v.categories[0] == undefined || filters[3].trim() == v.categories[0].name.trim()))
-                    sorted.push(input[i]);
-            } catch (err) {
-                console.log("соси письку, они в анкете что то проебали");
-            }
-        }
-        return sorted;
+    function getFilterUrl(): String {
+        let outputUrl = "https://www.themuse.com/api/public/jobs?";
+        for (let f of activeFilters)
+            if (f) outputUrl += f.className.split(" ")[0] + "=" + encodeURIComponent(f.textContent.trim()) + "&";
+        return outputUrl + "page=";
     }
 
-    async function updateVacancies(filters: Array<String>, offset = 1, output: Array<VacancyType> = []): Promise<Array<VacancyType>> {
-        try {
-            let response: Response = await fetch('https://www.themuse.com/api/public/jobs?page=' + offset);
+    async function updateVacancies(page = 0, output: Array<VacancyType> = []): Promise<Array<VacancyType>> {
+        do {
+            let apiUrl = getFilterUrl();
+            let response: Response = await fetch(apiUrl + page);
             let json: ApiResponse = (await response.json()) as ApiResponse;
-            output.push(...sortVacancies(json.results, filters));
-            if (offset >= vacancyRange / 20) return output;
-            else return updateVacancies(filters, offset + 1, output);
-        } catch (err) {
-            throw err;
-        }
+            if (json.results) output.push(...json.results);
+            page++;
+        } while (output.length < 20 && page < maxPage);
+        return output;
     }
 
-    updateVacancies(null).then((x) => (vacancies = x));
-
-    let activeFilterLocation: Element;
-    let activeFilterSalary: Element;
-    let activeFilterExperience: Element;
-    let activeFilterCategory: Element;
-    let filters: Array<String> = new Array<String>(4);
+    let vacancies: Array<VacancyType> = [];
+    updateVacancies().then((x) => (vacancies = x));
 
     function updateActiveElement(filterType: String, toActive: Element) {
         switch (filterType) {
-            case 'location':
-                if (activeFilterLocation)
-                    activeFilterLocation.classList.remove('active');
-                activeFilterLocation = toActive;
-                filters[0] = toActive.textContent;
-                activeFilterLocation.classList.add('active');
-                break;
-
-            case 'salary':
-                if (activeFilterSalary)
-                    activeFilterSalary.classList.remove('active');
-                activeFilterSalary = toActive;
-                filters[1] = toActive.textContent;
-                activeFilterSalary.classList.add('active');
-                break;
-
-            case 'experience':
-                if (activeFilterExperience)
-                    activeFilterExperience.classList.remove('active');
-                activeFilterExperience = toActive;
-                filters[2] = toActive.textContent;
-                activeFilterExperience.classList.add('active');
-                break;
-
             case 'category':
-                if (activeFilterCategory)
-                    activeFilterCategory.classList.remove('active');
-                activeFilterCategory = toActive;
-                filters[3] = toActive.textContent;
-                activeFilterCategory.classList.add('active');
+                if (activeFilters[0])
+                    activeFilters[0].classList.remove('active');
+                activeFilters[0] = toActive;
+                activeFilters[0].classList.add('active');
+                break;
+
+            case 'level':
+                if (activeFilters[1])
+                    activeFilters[1].classList.remove('active');
+                activeFilters[1] = toActive;
+                activeFilters[1].classList.add('active');
+                break;
+
+            case 'location':
+                if (activeFilters[2])
+                    activeFilters[2].classList.remove('active');
+                activeFilters[2] = toActive;
+                activeFilters[2].classList.add('active');
                 break;
         }
-        updateVacancies(filters).then((x) => (vacancies = x));
+        updateVacancies().then((x) => (vacancies = x));
     }
 </script>
 
@@ -103,7 +76,7 @@
                     {#each locations as location}
                         <li
                                 on:click={(event) => updateActiveElement('location', event.target)}
-                                class="inline-button"
+                                class="location"
                         >
                             {location}
                         </li>
@@ -112,48 +85,7 @@
             </div>
         </div>
 
-        <div class="filter filter-salary">
-            <div class="filter-header">
-                <p class="name">Salary:</p>
-            </div>
-
-            <div class="filter-content">
-                <ul class="select select-radio">
-                    <li
-                            class="radio-button salary-radio-button"
-                            on:click={(event) => updateActiveElement('salary', event.target)}
-                    >
-                        &lt; $1000
-                    </li>
-                    <li
-                            class="radio-button salary-radio-button"
-                            on:click={(event) => updateActiveElement('salary', event.target)}
-                    >
-                        $1000 - $2000
-                    </li>
-                    <li
-                            class="radio-button salary-radio-button"
-                            on:click={(event) => updateActiveElement('salary', event.target)}
-                    >
-                        $2000 - $3000
-                    </li>
-                    <li
-                            class="radio-button salary-radio-button"
-                            on:click={(event) => updateActiveElement('salary', event.target)}
-                    >
-                        $3000 - $5000
-                    </li>
-                    <li
-                            class="radio-button salary-radio-button"
-                            on:click={(event) => updateActiveElement('salary', event.target)}
-                    >
-                        &gt; $5000
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="filter filter-experience">
+        <div class="filter filter-level">
             <div class="filter-header">
                 <p class="name">Experience:</p>
             </div>
@@ -161,32 +93,32 @@
             <div class="filter-content">
                 <ul class="select select-radio">
                     <li
-                            class="radio-button experience-radio-button"
-                            on:click={(event) => updateActiveElement('experience', event.target)}
+                            class="level"
+                            on:click={(event) => updateActiveElement('level', event.target)}
                     >
                         no
                     </li>
                     <li
-                            class="radio-button experience-radio-button"
-                            on:click={(event) => updateActiveElement('experience', event.target)}
+                            class="level"
+                            on:click={(event) => updateActiveElement('level', event.target)}
                     >
                         &lt; 1 year
                     </li>
                     <li
-                            class="radio-button experience-radio-button"
-                            on:click={(event) => updateActiveElement('experience', event.target)}
+                            class="level"
+                            on:click={(event) => updateActiveElement('level', event.target)}
                     >
                         1 - 3 years
                     </li>
                     <li
-                            class="radio-button experience-radio-button"
-                            on:click={(event) => updateActiveElement('experience', event.target)}
+                            class="level"
+                            on:click={(event) => updateActiveElement('level', event.target)}
                     >
                         3 - 5 years
                     </li>
                     <li
-                            class="radio-button experience-radio-button"
-                            on:click={(event) => updateActiveElement('experience', event.target)}
+                            class="level"
+                            on:click={(event) => updateActiveElement('level', event.target)}
                     >
                         &gt; 5 years
                     </li>
@@ -204,7 +136,7 @@
                     {#each categories as category}
                         <li
                                 on:click={(event) => updateActiveElement('category', event.target)}
-                                class="inline-button"
+                                class="category"
                         >
                             {category}
                         </li>
