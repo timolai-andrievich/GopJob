@@ -56,7 +56,7 @@
 		text-decoration: none;
 	}
 	.main-block {
-		background-image: url(./bg.png);
+		background-image: url($lib/assets/bg.png);
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: right;
