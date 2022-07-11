@@ -4,7 +4,7 @@
 
 <div class="app-container">
 	<div id="logo-container">
-		<a href="{base}/" id="logo">JobFinder</a>
+		<!-- <a href="{base}/" id="logo">JobFinder</a> -->
 	</div>
 	<slot />
 </div>
@@ -18,14 +18,14 @@
 		font-family: 'Lato';
 		src: url('../lib/fonts/Lato-Regular.ttf');
 	}
-	#logo {
+	/* #logo {
 		font-family: 'Brawler', sans-serif;
 		font-weight: bold;
 		font-size: 3.1vmax;
 		text-decoration: none;
 		color: black;
-	}
-	.app-container {
+	} */
+	/* .app-container {
 		display: flex;
 		flex-direction: column;
 		margin-left: 10vw;
@@ -35,5 +35,5 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: end;
-	}
+	} */
 </style>
