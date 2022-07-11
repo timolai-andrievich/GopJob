@@ -55,7 +55,6 @@
 	autoUpdateVacancies();
 </script>
 
-
 <svelte:head>
 	<title>JobFinder - Advanced Search</title>
 </svelte:head>
