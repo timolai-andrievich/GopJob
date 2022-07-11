@@ -2,8 +2,8 @@
 	import type { VacancyType } from './ApiUtils';
 	import { base } from '$app/paths';
 
-	let expanded = false;
 	export let data: VacancyType;
+	let expanded = false;
 </script>
 
 <div id="vacancy" class={expanded ? 'expanded' : 'folded'}>
@@ -32,7 +32,7 @@
 		border-radius: 39px;
 		margin-bottom: 7vh;
 		font-family: 'Lato';
-		transition: 5s;
+		width: 100%;
 	}
 	h2#name {
 		padding-top: 5vh;
@@ -63,13 +63,13 @@
 		justify-items: stretch;
 	}
 	.expand-button {
-		margin: 2vmin;
+		margin: 2vw;
 		width: 2.5vw;
 		margin-right: 3vw;
 		transition: 250ms;
 	}
 	.expand-button:hover {
-		margin: 1vmin;
+		margin: 1vw;
 		width: 3.5vw;
 		margin-right: 2.5vw;
 	}

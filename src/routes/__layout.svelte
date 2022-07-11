@@ -18,6 +18,9 @@
 		font-family: 'Lato';
 		src: url('../lib/fonts/Lato-Regular.ttf');
 	}
+	:root {
+		font-family: 'Lato', sans-serif;
+	}
 	#logo {
 		font-family: 'Brawler', sans-serif;
 		font-weight: bold;
@@ -28,12 +31,13 @@
 	.app-container {
 		display: flex;
 		flex-direction: column;
-		margin-left: 10vw;
-		margin-right: 10vw;
+		margin-left: 3vw;
+		margin-right: 3vw;
 	}
 	#logo-container {
 		display: flex;
 		flex-direction: row;
 		justify-content: end;
+		margin-bottom: 5vh;
 	}
 </style>

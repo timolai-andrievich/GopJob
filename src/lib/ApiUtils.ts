@@ -29,3 +29,29 @@ export interface ApiResponse {
 	total: number;
 	results: Array<VacancyType>;
 }
+
+export interface Company {
+	description: string;
+	locations: Array<{ name: string }>;
+	industries: Array<{ name: string }>;
+	tags: Array<string>;
+	short_name: string;
+	name: string;
+	publication_date: string;
+	model_type: string;
+	twitter: string;
+	id: number;
+	size: {
+		name: string;
+		short_name: string;
+	};
+	refs: {
+		landing_page: string;
+		jobs_page: string;
+		mini_f1_image: string;
+		f2_image: string;
+		logo_image: string;
+		f1_image: string;
+		f3_image: string;
+	};
+}

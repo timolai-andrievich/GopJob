@@ -3,3 +3,4 @@
 </script>
 
 <a href="{base}/hot">Hot vacancies</a>
+<a href="{base}/filter">Search vacancies</a>
