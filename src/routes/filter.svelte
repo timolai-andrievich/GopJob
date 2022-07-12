@@ -29,7 +29,6 @@
 			if (json.results) output.push(...json.results);
 			page++;
 		} while (output.length < 20 && page < maxPage);
-		console.log(output);
 		return output;
 	}
 
@@ -94,6 +93,11 @@
 </main>
 
 <style>
+	main {
+		padding-left: 150px;
+		padding-right: 150px;
+	}
+
 	header {
 		display: flex;
 		flex-direction: row;
