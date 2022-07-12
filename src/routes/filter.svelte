@@ -100,7 +100,6 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		height: 30vmin;
 		margin-bottom: 10vh;
 		font-family: 'Lato-bold', sans-serif;
 		margin-left: 10vw;
@@ -108,7 +107,7 @@
 	}
 
 	header > img {
-		height: 70%;
+		height: 21vmin;
 	}
 
 	header > h1 {
