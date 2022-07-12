@@ -20,8 +20,9 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Run unit tests
-        run: npx playwright install
-        run: npm run test
+        run: |
+          npx playwright install
+          npm run test
       - name: Build
         run: npm run build
       - name: Deploy to pages
