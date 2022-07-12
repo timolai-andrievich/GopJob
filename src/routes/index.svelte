@@ -7,11 +7,13 @@
 	<title>JobFinder - Homepage</title>
 </svelte:head>
 
-<MediaQuery query="(max-width: 35vw)" let:matches>
+<MediaQuery query="(max-width: 400px)" let:matches>
 	{#if matches}
 		<div class="main-block-mobile">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<button class="btn-mobile discovery-button-mobile">Discover Jobs</button>
+			<button class="btn-mobile discovery-button-mobile"
+				><a href="{base}/filter/">Discover Jobs</a></button
+			>
 		</div>
 		<div class="hot-mobile">
 			<div class="heading-hot-mobile">
@@ -23,9 +25,7 @@
 				Just click the button bellow and you will see a list of the latest and most relevant
 				vacancies from the most reliable employers!
 			</p>
-			<form action="{base}/hot/">
-				<button class="btn-mobile">Find Jobs Right Now</button>
-			</form>
+			<button class="btn-mobile"><a href="{base}/hot/">Find Jobs Right Now</a></button>
 		</div>
 
 		<div class="features-mobile">
@@ -63,9 +63,7 @@
 	{#if matches}
 		<div class="main-block">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<form action="{base}/filter/">
-				<button class="btn discovery-button">Discover Jobs</button>
-			</form>
+			<button class="btn discovery-button"><a href="{base}/filter/">Discover Jobs</a></button>
 		</div>
 		<div class="hot">
 			<div class="heading-hot">
@@ -77,9 +75,8 @@
 				Just click the button bellow and you will see a list of the latest and most relevant
 				vacancies from the most reliable employers!
 			</p>
-			<form action="{base}/hot/">
-				<button class="btn">Find Jobs Right Now</button>
-			</form>
+
+			<button class="btn"><a href="{base}/hot/">Find Jobs Right Now</a></button>
 		</div>
 		<div class="features">
 			<h2>How JobFinder works for You.</h2>
@@ -114,6 +111,12 @@
 </MediaQuery>
 
 <style>
+	a,
+	a:hover,
+	a:visited {
+		text-decoration: none;
+		color: inherit;
+	}
 	.main-block {
 		background-image: url($lib/assets/bg.png);
 		background-repeat: no-repeat;
@@ -196,14 +199,6 @@
 	.apply {
 		grid-area: four;
 	}
-	.form {
-		padding: 10vh 3vw;
-		text-align: center;
-		background-color: #fff;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
 	.btn {
 		background-color: #df9977;
 		color: #fff;
@@ -223,9 +218,6 @@
 	h2 {
 		font-family: 'Lato-bold', sans-serif;
 		font-size: 64px;
-	}
-	.form button {
-		margin-top: 50px;
 	}
 	.main-block-mobile {
 		background-image: url(./bg.png);
@@ -295,15 +287,8 @@
 		width: 145px;
 		height: auto;
 	}
-	.form-mobile {
-		padding: 100px 70px;
-		text-align: center;
-		background-color: #fff;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	.form-mobile button {
-		margin-top: 40px;
+	.form {
+		margin-left: 5vw;
+		margin-right: 5vw;
 	}
 </style>
