@@ -7,13 +7,11 @@
 	<title>JobFinder - Homepage</title>
 </svelte:head>
 
-<MediaQuery query="(max-width: 600px)" let:matches>
+<MediaQuery query="(max-width: 35vw)" let:matches>
 	{#if matches}
 		<div class="main-block-mobile">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<form action="{base}/filter/">
-				<button class="btn-mobile discovery-button-mobile">Discover Jobs</button>
-			</form>
+			<button class="btn-mobile discovery-button-mobile">Discover Jobs</button>
 		</div>
 		<div class="hot-mobile">
 			<div class="heading-hot-mobile">
@@ -61,7 +59,7 @@
 		</div>
 	{/if}
 </MediaQuery>
-<MediaQuery query="(min-width: 601px)" let:matches>
+<MediaQuery query="(min-width: 400px)" let:matches>
 	{#if matches}
 		<div class="main-block">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
@@ -139,14 +137,14 @@
 	.hot {
 		background-color: #fff;
 		text-align: center;
-		padding: 150px 150px;
+		padding: 15vh 7vw;
 	}
 	.hot > p {
 		font-size: 32px;
 		font-family: 'Lato', sans-serif;
 	}
 	.padd {
-		margin-bottom: 150px;
+		margin-bottom: 10vh;
 	}
 	.heading-hot {
 		display: flex;
@@ -161,7 +159,7 @@
 		color: #fff;
 		background-color: #898ea2;
 		text-align: center;
-		padding: 150px 0;
+		padding: 15vh 0;
 		font-family: 'Lato', sans-serif;
 	}
 	.features img {
@@ -179,7 +177,7 @@
 		gap: 60px;
 	}
 	.subcard {
-		padding: 20px 60px;
+		padding: 2vh 3vw;
 		background-color: #df9977;
 		max-width: 320px;
 		text-align: center;
@@ -199,7 +197,7 @@
 		grid-area: four;
 	}
 	.form {
-		padding: 150px 70px;
+		padding: 10vh 3vw;
 		text-align: center;
 		background-color: #fff;
 		display: flex;
@@ -234,7 +232,7 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
-		height: 700px;
+		height: 70vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
