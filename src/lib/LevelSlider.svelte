@@ -14,7 +14,15 @@
 		[0, 'Internship'],
 		[1, 'Entry Level'],
 		[2, 'Mid Level'],
-		[3, 'Senior Level']
+		[3, 'Senior Level'],
+		[4, 'management']
+	]);
+	const levelMapHumanReadable: Map<number, string> = new Map<number, string>([
+		[0, 'Internship'],
+		[1, 'Entry Level'],
+		[2, 'Mid Level'],
+		[3, 'Senior Level'],
+		[4, 'Management']
 	]);
 	values.levelSliderText = levelMap.get(values.levelSlider);
 </script>
@@ -31,11 +39,11 @@
 	</div>
 	{#if expanded}
 		<div id="level-slider">
-			{levelMap.get(values.levelSlider)}
+			{levelMapHumanReadable.get(values.levelSlider)}
 			<input
 				type="range"
 				min="0"
-				max="3"
+				max="4"
 				bind:value={values.levelSlider}
 				on:change|preventDefault={createUpdatedEvent}
 			/>
