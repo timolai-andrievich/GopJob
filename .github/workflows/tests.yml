@@ -1,12 +1,11 @@
-name: Build and deploy to GitHub Pages
+name: Unit Tests
 
 on:
-  push:
-    branches: [main]
+  pull_request:
 
 jobs:
   build:
-    name: Build and deploy
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Clone git repository
@@ -17,15 +16,7 @@ jobs:
           node-version: '16'
       - name: Run continuous integration
         run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Run unit tests
+      - name: Run tests
         run: |
           npx playwright install
           npm run test
-      - name: Build
-        run: npm run build
-      - name: Deploy to pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: 'build'
