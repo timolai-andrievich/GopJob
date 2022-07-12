@@ -11,9 +11,9 @@
 	{#if matches}
 		<div class="main-block-mobile">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<a href="{base}/filter"
-				><button class="btn-mobile discovery-button-mobile">Discover Jobs</button></a
-			>
+			<form action="{base}/filter/">
+				<button class="btn-mobile discovery-button-mobile">Discover Jobs</button>
+			</form>
 		</div>
 		<div class="hot-mobile">
 			<div class="heading-hot-mobile">
@@ -25,8 +25,11 @@
 				Just click the button bellow and you will see a list of the latest and most relevant
 				vacancies from the most reliable employers!
 			</p>
-			<a href="{base}/hot"><button class="btn-mobile">Find Jobs Right Now</button></a>
+			<form action="{base}/hot/">
+				<button class="btn-mobile">Find Jobs Right Now</button>
+			</form>
 		</div>
+
 		<div class="features-mobile">
 			<h2 class="h2-mobile">How JobFinder works for You.</h2>
 			<div class="container-mobile">
@@ -50,10 +53,11 @@
 		</div>
 		<div class="form-mobile">
 			<h2 class="h2-mobile">Leave your email to be the first to find out about new vacancies!</h2>
-			<a
-				href="mailto:nestpaul1569@gmail.com?subject=Subscription Request&body=Hello, I'd like to subscribe to your newsletters! Please, add my email address to a list."
-				><button class="btn-mobile">Send request for subscription</button></a
+			<form
+				action="mailto:nestpaul1569@gmail.com?subject=Subscription Request&body=Hello, I'd like to subscribe to your newsletters! Please, add my email address to a list."
 			>
+				<button class="btn-mobile">Send request for subscription</button>
+			</form>
 		</div>
 	{/if}
 </MediaQuery>
@@ -61,7 +65,9 @@
 	{#if matches}
 		<div class="main-block">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<a href="{base}/filter"><button class="btn discovery-button">Discover Jobs</button></a>
+			<form action="{base}/filter/">
+				<button class="btn discovery-button">Discover Jobs</button>
+			</form>
 		</div>
 		<div class="hot">
 			<div class="heading-hot">
@@ -73,7 +79,9 @@
 				Just click the button bellow and you will see a list of the latest and most relevant
 				vacancies from the most reliable employers!
 			</p>
-			<a href="{base}/hot"><button class="btn">Find Jobs Right Now</button></a>
+			<form action="{base}/hot/">
+				<button class="btn">Find Jobs Right Now</button>
+			</form>
 		</div>
 		<div class="features">
 			<h2>How JobFinder works for You.</h2>
@@ -98,18 +106,16 @@
 		</div>
 		<div class="form">
 			<h2>Leave your email to be the first to find out about new vacancies!</h2>
-			<a
-				href="mailto:nestpaul1569@gmail.com?subject=Subscription Request&body=Hello, I'd like to subscribe to your newsletters! Please, add my email address to a list."
-				><button class="btn">Send request for subscription</button></a
+			<form
+				action="mailto:nestpaul1569@gmail.com?subject=Subscription Request&body=Hello, I'd like to subscribe to your newsletters! Please, add my email address to a list."
 			>
+				<button class="btn">Send request for subscription</button>
+			</form>
 		</div>
 	{/if}
 </MediaQuery>
 
 <style>
-	a {
-		text-decoration: none;
-	}
 	.main-block {
 		background-image: url(./bg.png);
 		background-repeat: no-repeat;
