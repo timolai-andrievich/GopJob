@@ -17,4 +17,5 @@ jobs:
       - name: Run continuous integration
         run: npm ci
       - name: Run tests
+        run: npx playwright install
         run: npm run test
