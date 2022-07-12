@@ -11,7 +11,9 @@
 	{#if matches}
 		<div class="main-block-mobile">
 			<img src="{base}/logo_main.png" alt="JobFinder logo" />
-			<a href="{base}/filter"><button class="btn-mobile discovery-button-mobile">Discover Jobs</button></a>
+			<a href="{base}/filter"
+				><button class="btn-mobile discovery-button-mobile">Discover Jobs</button></a
+			>
 		</div>
 		<div class="hot-mobile">
 			<div class="heading-hot-mobile">
